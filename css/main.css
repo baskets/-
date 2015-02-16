@@ -238,7 +238,6 @@ th {
 }
 body {
   color: #555;
-  background: #fff;
   font: 16px/1.8 "Lato", "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 h1,
@@ -678,7 +677,7 @@ pre .javascript .function {
 }
 .header-inner {
   margin: 0 auto;
-  padding: 100px 0 70px;
+  padding: 10px 0 10px;
   width: 960px;
 }
 .one-column .header-inner {
@@ -770,6 +769,9 @@ pre .javascript .function {
 }
 .menu .menu-item a:hover {
   border-bottom-color: #222;
+}
+.body {
+  background-image: url("../images/geometry2.png");
 }
 .translation {
   margin-top: -20px;
@@ -1126,7 +1128,7 @@ pre .javascript .function {
 }
 .posts-expand .post-eof {
   display: block;
-  margin: 160px auto 120px;
+  margin: 80px auto 10px;
   width: 8%;
   height: 1px;
   background: #ccc;
@@ -1223,6 +1225,10 @@ pre .javascript .function {
 .posts-collapse .post-title a {
   color: #666;
   border-bottom: none;
+}
+.post-type-normal {
+  padding: 20px;
+  background: #fff;
 }
 .pagination {
   margin: 120px 0 40px;
