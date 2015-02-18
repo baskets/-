@@ -26,11 +26,11 @@
 
 
 
-  <title> Tag: allnew // Notes @ Programming </title>
+  <title> 為 Sublime Text 增加自己喜歡的快捷鍵 // Notes @ Programming </title>
 </head>
 
 <body>
-  <div class="container one-column ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -86,14 +86,9 @@
             
           
 
-          <div id="posts" class="posts-collapse">
+          <div id="posts" class="posts-expand">
             
-  <div class="collection-title">
-    <h2 >allnew</h2>
-  </div>
-
   
-    
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -104,9 +99,7 @@
           
           
             
-              <a class="post-title-link" href="/1975/01/01/first-post/">
-                First Post!
-              </a>
+              為 Sublime Text 增加自己喜歡的快捷鍵
             
           
         </h1>
@@ -115,7 +108,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              12-31
+              Posted on 2014-05-06
             
           </span>
         
@@ -125,11 +118,46 @@
     </div>
 
     
+      <div class="post-body">
 
+        
+        
+
+        
+          <p>因為有時候需要使用到 Sublime Text 的自動縮排功能，也就是所謂的 reindent<br>來整理程式碼，但 sublime text 預設並未將 reindent 的功能指定給某一個 shorcut<br>因此必須要手動地點選 Edit =&gt; Line =&gt; Reindent，來達成這個功能<br>對於經常使用的人，是一件頗麻煩的事情</p>
+<a id="more"></a>
+<p>但所幸，在 sublime text，使用者可以自己定義喜歡的 shortcut<br>方式如下:<br>進入 Preference =&gt; Key Bindings - User<br>若您從未修改過，預設應該是長這樣子的</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[]</div></pre></td></tr></table></figure>
+
+<p>更改為用 F10 當作 reindent 的快捷鍵</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  { "<span class="attribute">keys</span>": <span class="value">[<span class="string">"F10"</span>]</span>, "<span class="attribute">command</span>": <span class="value"><span class="string">"reindent"</span></span>}</div><div class="line"> ]</div></pre></td></tr></table></figure>
+
+<p>當然若要用多組合 shortcut 的方式也可以，以下就是把 cmd+r 設定為 reindent</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  { "<span class="attribute">keys</span>": <span class="value">[<span class="string">"command+r"</span>]</span>, "<span class="attribute">command</span>": <span class="value"><span class="string">"reindent"</span></span>}</div><div class="line"> ]</div></pre></td></tr></table></figure>
+
+<p>大功告成! 試著按按看 cmd + r 會發生什麼事情吧!</p>
+<p>Ref.<br><a href="http://www.sublimetext.com/docs/3/" target="_blank" rel="external">Sublime Text 3</a></p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+      </div>
     
   </div>
 
 
+
+  
+    
   
 
           </div>

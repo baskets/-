@@ -1,0 +1,239 @@
+<!doctype html>
+<html class="theme-next">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.2.2"/>
+
+
+    <meta name="description" content="Here is a blog that I record my learning related to programming." />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.2.2" />
+
+
+
+  <title> # 筆記 Javascript hasOwnProperty 理解 // Notes @ Programming </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">Notes @ Programming</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              # 筆記 Javascript hasOwnProperty 理解
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              Posted on 2014-11-08
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <blockquote>
+<p>Everything in JavaScript acts like an object, with the only two exceptions being null and undefined.<br><a href="http://bonsaiden.github.io/JavaScript-Garden/#object.general" target="_blank" rel="external">Javascript Garden</a></p>
+</blockquote>
+<a id="more"></a>
+<p>在 Javascript裡面，每個東西都像是物件，都會繼承自 Object 這個物件。<br>特別需注意的是，在使用 for in Loop 的時候須注意會向上搜尋一個物件的 prototype chain。</p>
+<p>For Example:</p>
+<pre><code><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;
+<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;
+<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr){
+    <span class="built_in">console</span>.log(i);
+}
+</code></pre><p>也許我們預期的 output 應該要是 (一般我們可能只是要取出陣列的值)</p>
+<pre><code>1
+2
+3
+</code></pre><p>但實際上結果會是</p>
+<pre><code>1
+2
+3
+bar
+</code></pre><p>這是因為 for in loop 會向上 tranverse prototype chain，由於 arr 繼承自 Array，因此會搜尋到 bar。<br>但在大多數的寫程式情況下，我們並不期望這種情況發生。<br>這時候 hasOwnProperty() 能夠解決這個問題，他會確認被傳入的物件是否是被定義在呼叫此方法的物件下，而非物件的 prototype chain 內，因此我們可以這麼做</p>
+<pre><code><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;
+<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;
+<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr){
+    <span class="keyword">if</span> (arr.hasOwnProperty(i))
+            <span class="built_in">console</span>.log(i);
+}
+</code></pre><p> 或不使用 for in loop，而使用最一般的方法 </p>
+<pre><code><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;
+<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;
+<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length; i++){
+            <span class="built_in">console</span>.log(i);
+}
+</code></pre><p>這便會 output 我們預期的 output。<br>這是我對於 hasOwnProperty 的一點小理解<br>Any suggestions r welcome!</p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    
+  
+
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">lockys</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/dist/jquery.min.js?v=0.2.2"></script>
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+
+  
+
+  
+  
+
+  
+
+
+  
+</body>
+</html>

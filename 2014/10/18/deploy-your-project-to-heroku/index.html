@@ -1,0 +1,254 @@
+<!doctype html>
+<html class="theme-next">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.2.2"/>
+
+
+    <meta name="description" content="Here is a blog that I record my learning related to programming." />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.2.2" />
+
+
+
+  <title> Deploy Your Project to Heroku. // Notes @ Programming </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">Notes @ Programming</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Deploy Your Project to Heroku.
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              Posted on 2014-10-18
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p><a href="heroku.com">Heroku</a> 支援上傳大部份可用來開發 web 的語言，主要是用 git 來做 Deploy，所以電腦裡必須裝有 git 這個版本控制程式。基本上上傳步驟都是依照 Heroku 官方的教學步驟進行，但是不免俗的還是會遇到一些問題…所以這篇文章是紀錄了發生什麼問題，以及如何解決。<br><a id="more"></a></p>
+<p>官方的上傳文件其實寫得非常清楚，首先必須先下載 Heroku toolbelt 來安裝。安裝完之後，就可以在 terminal 執行</p>
+<pre><code>$ heroku login
+Enter your Heroku credentials.
+Email: &lt;user&gt;@gmail.com
+Password:
+Could <span class="keyword">not</span> find an existing <span class="keyword">public</span> <span class="keyword">key</span>.
+Would you <span class="keyword">like</span> <span class="keyword">to</span> generate one? [Yn]
+Generating <span class="keyword">new</span> SSH <span class="keyword">public</span> <span class="keyword">key</span>.
+Uploading ssh <span class="keyword">public</span> <span class="keyword">key</span> /Users/&lt;username&gt;/.ssh/id_rsa.pub
+</code></pre><p>他會要你輸入帳號密碼，並且要選擇一個 key 上傳至 heroku，如果沒有 key 就依照他的步驟幫你建立<br>我的例子是我已經有 Github 和 Google Apache Engine 的 key 在我的 .ssh 資料夾之下，所以我選擇<br>新建立一個給 heroku 的 key，透過以下指令來建立 key。</p>
+<pre><code><span class="variable">$ </span>ssh-keygen -t rsa
+<span class="constant">Enter</span> file <span class="keyword">in</span> which to save the key (<span class="regexp">/Users/</span>&lt;username&gt;<span class="regexp">/.ssh/id</span>_rsa)<span class="symbol">:</span>
+</code></pre><p>輸入 key 的檔案名即可建立，假設輸入的是 heroku，則應該會產生 heroku 和 heroku.pub 這兩個檔案在你現在位於的資料夾之下，再把它們倆個拉到 ~/.ssh/ 資料夾下即可。</p>
+<p>接著再透過以下指令把我們剛剛建立的 key 上傳給 heroku</p>
+<pre><code><span class="input"><span class="prompt">$ heroku key:add &lt;path to your key，這裏是 ~/.ssh/heroku.pub&gt;</span> </span>
+</code></pre><p>再輸入以下指令可以看看現在 heroku 上有我們剛剛上傳的 key</p>
+<pre><code>$ heroku <span class="built_in">keys</span>
+</code></pre><p>若要刪除所有 heroku 上所儲存的 SSH keys，用下面的指令</p>
+<pre><code>$ heroku <span class="built_in">keys</span>:<span class="built_in">clear</span>
+</code></pre><p>上傳了 key 之後，就可以準備來上傳我們的 Project 了!<br>首先，先用 git 來開啟一個 local repository，來管控我們的專案，輸入以下指令。</p>
+<pre><code>$ git init
+$ git <span class="built_in">add</span> . # <span class="built_in">add</span> <span class="keyword">all</span> <span class="keyword">files</span> <span class="keyword">to</span> stage area.
+$ git commit -<span class="keyword">m</span> <span class="string">'init'</span> # commit <span class="keyword">to</span> local repository.
+</code></pre><p>OK! 透過以下指令來直接在 heroku 上建立一個 App 來 host 我們的專案。</p>
+<pre><code> <span class="variable">$ </span>heroku create
+ <span class="constant">Creating</span> sharp-rain-<span class="number">871</span>... done, stack is cedar
+ <span class="symbol">http:</span>/<span class="regexp">/sharp-rain-871.herokuapp.com/</span> | git<span class="variable">@heroku</span>.<span class="symbol">com:</span>sharp-rain-<span class="number">871</span>.git
+ <span class="constant">Git</span> remote heroku added
+</code></pre><p>他會隨機產生 App 的名字，譬如這邊就是 sharp-rain-871，若你想要自己取名可以到 <a href="https://dashboard-next.heroku.com" target="_blank" rel="external">heroku dashboard</a> 手動建立 App。</p>
+<p>最後，在下 push 指令即可大功告成囉。</p>
+<pre><code><span class="variable">$ </span>git push heroku master
+</code></pre><p>如果你沒遇到任何問題，就可以上 <a href="http://sharp-rain-871.herokuapp.com/" target="_blank" rel="external">http://sharp-rain-871.herokuapp.com/</a> 去看看你的網站。<br>但我在 push 這邊遇到了這個問題</p>
+<blockquote>
+<p>‘Permission denied (publickey). fatal: Could not read from remote repository.’</p>
+</blockquote>
+<p>認證 key 也上傳了，還是無法 push，完全依照官網步驟還是失敗，讓我百思不得其解。<br>最後在一個日本人的網站找到解法。<br>首先，在 ~/.ssh/ 下建立 config 檔</p>
+<pre><code><span class="variable">$ </span>vi ~<span class="regexp">/.ssh/config</span>
+</code></pre><p>config檔內容:</p>
+<pre><code>Host heroku.<span class="keyword">com</span>
+User git
+port <span class="number">22</span>
+Hostname heroku.<span class="keyword">com</span>
+IdentityFile ~/.ssh/heroku &lt;= 這是你的 key <span class="keyword">file</span>，注意沒有 .pub。
+TCPKeepAlive yes
+IdentitiesOnly yes
+</code></pre><p>設定完，就可以成功上傳了!<br>到底原因是什麼，我也還不太清楚，因為官方文件並沒提到這一步…<br>應該是官方這個<a href="https://devcenter.heroku.com/articles/keys#fixing-problems-with-keys" target="_blank" rel="external">頁面</a>所提到的問題，因為當在下 git 指令時，提供給 heroku 的並不是我上傳到 heroku 的 key，而是 git 的 key，兩個 key 不同，所以造成 Permission denied的問題，所以透過設定 config 檔來更改機制，根據 Host 來提供正確的 Key給 heroku，如此一來便不會 Permission denied 了。</p>
+<p>以下是相同問題，但是不同的解法，或許可以幫到同樣發生此問題的人!<br><a href="http://stackoverflow.com/questions/17626944/heroku-permission-denied-publickey-fatal-could-not-read-from-remote-reposito" target="_blank" rel="external">Heroku ‘Permission denied (publickey)</a></p>
+<p>Thanks for <a href="http://opamp.hatenablog.jp/entry/20110914/1316011399" target="_blank" rel="external">opamp.hatenablog</a></p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    
+  
+
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">lockys</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/dist/jquery.min.js?v=0.2.2"></script>
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+
+  
+
+  
+  
+
+  
+
+
+  
+</body>
+</html>

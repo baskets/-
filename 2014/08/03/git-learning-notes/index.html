@@ -1,0 +1,228 @@
+<!doctype html>
+<html class="theme-next">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.2.2"/>
+
+
+    <meta name="description" content="Here is a blog that I record my learning related to programming." />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.2.2" />
+
+
+
+  <title> #1 Create local repository and upload to Github. // Notes @ Programming </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">Notes @ Programming</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              #1 Create local repository and upload to Github.
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              Posted on 2014-08-03
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>記錄自己學習 git 的筆記，作為日後回顧用   </p>
+<a id="more"></a>
+<h1 id="建立新的_repository_的方法">建立新的 repository 的方法</h1>
+<p><strong>1. 先於自己的 github 帳號下建立 repository</strong><br>在上傳至 github 之前，要先做此認證設定，參考 <a href="https://help.github.com/articles/set-up-git/" target="_blank" rel="external">Set up git.</a><br><strong>2. 在需要由 git 控管的資料夾下指令，建立 local repository</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">init</span></div></pre></td></tr></table></figure>
+
+<p><strong>3. 將所有檔案新增至 staging area</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure>
+
+<p><strong>4. 將所有檔案提交 local repository，並紀錄提交的訊息</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="operator"><span class="keyword">commit</span> -m <span class="string">"first commit"</span></span></div></pre></td></tr></table></figure>
+
+<p><strong>5. 建立一個名為 origin 且指向你 github repository 的 remote</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote <span class="built_in">add</span> origin http<span class="variable">s:</span>//github.<span class="keyword">com</span>/username/proj.git</div></pre></td></tr></table></figure>
+
+<p><strong>6. (非必要)使用 pull 指令和 github repo merge </strong><br>*若github repo.上有local repo.未有的檔案時，必須做這行指令，否則無法push至remote (可能會產生 conflict，需處理 conflicts.)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">git</span> pull origin master</div></pre></td></tr></table></figure>
+
+
+<p><strong>7. push 至 github 上，master 是我們在 local 端的主分支</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">push</span> origin master</div></pre></td></tr></table></figure>
+
+<p><strong>References:</strong><br><a href="http://blog.gogojimmy.net/2012/01/21/how-to-use-git-2-basic-usage-and-worflow/" target="_blank" rel="external">git Branch基礎</a><br><a href="http://linux.vbird.org" target="_blank" rel="external">鳥哥的私房菜</a><br><a href="http://ihower.tw/git/index.html" target="_blank" rel="external">ihower的github教學</a></p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    
+  
+
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">lockys</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/dist/jquery.min.js?v=0.2.2"></script>
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+
+  
+
+  
+  
+
+  
+
+
+  
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html class="theme-next">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.2.2"/>
+
+
+    <meta name="description" content="Here is a blog that I record my learning related to programming." />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.2.2" />
+
+
+
+  <title> 我的 OS X 環境與程式 // Notes @ Programming </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">Notes @ Programming</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              我的 OS X 環境與程式
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              Posted on 2014-10-31
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>我用的是2012年的 Macbook Air with OS X Yosemite，最近用 Appcleaner 想說清理一些根本不會用到的程式，結果一清，不知原因(可能這並不是一個很好的刪除程式方式…)地導致某些程式無法正常開啟… 嘗試 Google 解法，但不得其解，好吧，只好索性選擇 clean install 系統好了，反正使用了一段時間也多了一些垃圾… 但麻煩的點就在於，開發程式的環境要重新安裝! Okay, 就當作重新複習一次架設環境吧!<br><a id="more"></a></p>
+<h2 id="一、程式開發環境重建">一、程式開發環境重建</h2>
+<p>首先，再重灌之前，我已經先備份了 ~/.bash_profile，因為裡面儲存了一些重要的設定<br>所以重灌後，直接在 ~/ 底下建立 .bash_profile 就好了。</p>
+<p>之後我整理出自己的程式開發需求：</p>
+<h3 id="以_Django_作為網站開發的_Framework，並以_Google_Apache_Engine_為_Hosting_Service-">以 Django 作為網站開發的 Framework，並以 Google Apache Engine 為 Hosting Service.</h3>
+<blockquote>
+<p>這裏是假設已經有一個現成的 Django 專案為前提，但原則上做完這些事情，也可以以 Django 架站。</p>
+</blockquote>
+<p>我現在用 Pycharm 作為主要的 IDE，Sublime Text 為輔，而 Terminal 使用 iTerm2 來取代內建的終端機。<br>Python &amp; easy_install (已內建，Good!)<br>首先安裝 PIP - Python 的 Packages 管理程式。</p>
+<pre><code>$ <span class="built_in">sudo</span> easy_install pip 
+</code></pre><p>接著安裝 <a href="http://virtualenv.readthedocs.org/en/latest/virtualenv.html" target="_blank" rel="external">virtualenv</a> &amp; <a href="http://virtualenvwrapper.readthedocs.org/en/latest/install.html" target="_blank" rel="external">virtualenvwrapper</a><br>因為每個專案開發所需的環境可能不盡相同，virtualenvwrapper 幫助我們管理這些開發環境。</p>
+<pre><code><span class="variable">$ </span>pip install virtualenv
+<span class="variable">$ </span>pip install virtualenvwrapper
+</code></pre><p>安裝 virtualenvwrapper 之後別忘了設定 ~./bash_profile，參考<a href="http://virtualenvwrapper.readthedocs.org/en/latest/install.html#shell-startup-file" target="_blank" rel="external">這裏</a><br>更改完 ~/.bash_profile 後必須重新開 Termial 或者下以下指令才會生效!</p>
+<pre><code>$ <span class="built_in">source</span> ~/.bash_profile
+</code></pre><blockquote>
+<p>詳細的 virtualenvwrapper 使用方法參考它的<a href="http://virtualenvwrapper.readthedocs.org/en/latest/" target="_blank" rel="external">文件</a></p>
+</blockquote>
+<p>接著若您創立了一個虛擬環境，您可用以下指令進入該虛擬環境，然後再安裝 Django</p>
+<pre><code><span class="variable">$ </span>workon &lt;you-virtual-env-name&gt;
+<span class="variable">$ </span>pip instal django == <span class="number">1.5</span> <span class="comment"># install Django 1.5 for example.</span>
+</code></pre><p>此時開啟 Pycharm 並開啟我的 Django 專案資料夾，並設定要用哪一個 Python intepreter<br>(你可能會有很多個在你電腦裡，這裡我選擇的是我產生的虛擬環境下的 Python)<br>這時 Pycharm 會提醒你有哪些尚未安裝的 Python Packages，但是你的 Project 有用到的，只要點 install，Pycharm就會幫忙你安裝好這些 Packages，這真是ㄧ個非常方便又懶人的功能… 或者你也不需要靠這功能<br>可以用以下指令將你有使用的 Packages 輸出成一個 requirement.txt 檔(裡面會是你 Package 的 list.)</p>
+<pre><code><span class="input"><span class="prompt">$ pip freeze &gt;</span> requirements.txt</span>
+</code></pre><p>再下指令即可一次安裝完所有 Packages，就不需要一個一個 install packages 了。</p>
+<pre><code><span class="variable">$ </span>pip install -r requirements.txt
+</code></pre><p>做到這邊，基本上已經建置好當初好所有 Django Project 所需要的 dependencies.<br>所以下以下指令應該便能夠啟動簡單的 Server，來 run 我們的網站。</p>
+<pre><code>$ (virtualEnvName) <span class="keyword">python</span> manage.<span class="keyword">py</span> runserver
+</code></pre><p>接著因為我使用 Google Apache Engine 來 Hosting Django 的專案所以必須安裝下面兩支程式。</p>
+<ol>
+<li><a href="https://cloud.google.com/sdk/" target="_blank" rel="external"><strong>Google Cloud SDK</strong></a> </li>
+<li><a href="https://cloud.google.com/appengine/downloads" target="_blank" rel="external"><strong>Google AppEngineLauncher</strong></a>  </li>
+</ol>
+<blockquote>
+<p>安裝完 Google AppEngineLauncher 後，記得開啟該程式，他會問你是否 symlinks，記得要。</p>
+</blockquote>
+<p>接著必須產生 Google 的 oauth2 credential，才可在本地的 Terminal 上傳專案與管理 Cloud SQL 的資料庫 instance。</p>
+<p><strong>＃如何產生 Google 的 oauth2 之 credential file?</strong><br>可以使用以下指令來產生。</p>
+<pre><code><span class="variable">$ </span>gcloud config set account &lt;google-mail&gt;
+<span class="variable">$ </span>gcloud auth login <span class="comment"># Get credentials for the tools in the Google Cloud SDK via a web flow.</span>
+</code></pre><p>或直接在 Terminal 下 syncdb 指令，當然你必須先在 <strong>~/.bash_profile</strong> 、<strong>app.yaml</strong> 和 <strong>setting.py</strong> 這三個檔案裡面設定好與 Google Cloud SQL 內的資料庫 instance 做連結的程式碼(下面有筆記)。</p>
+<pre><code>$ <span class="keyword">python</span> manage.<span class="keyword">py</span> syncdb # 此時會跳出網頁要你登入你的 Google 帳號
+</code></pre><p>即可於 ~/ 底下產生 .googlesql_oauth2.dat 檔，便可使用以下指令 deploy 你的專案</p>
+<blockquote>
+<p>若已經存在 .googlesql_oauth2.dat，但是產生 InternalError: (0, u’End user Google Account not authorized.’) 的錯誤，可以刪除原有的 .googlesql_oauth2.dat，再重新下 syncdb 指令產生一次</p>
+</blockquote>
+<pre><code>$ appcfg --oauth2 update . <span class="comment">// 上傳專案至 GAE</span>
+</code></pre><p>以及在 localhost 端 accesss Google SQL 資料庫的權限。<br>現在你 run 在 localhost 的網站，也可以直接 access cloud SQL 下的 database instance。</p>
+<p><strong># 如何與 Cloud SQL 做連結？</strong><br>~/.bash_profile 的設定</p>
+<pre><code><span class="keyword">export</span> GAE=<span class="string">"/usr/local/google_appengine"</span>
+<span class="keyword">export</span> PYTHONPATH=<span class="string">"<span class="variable">$PYTHONPATH</span>:<span class="variable">$GAE</span>:<span class="variable">$GAE</span>/lib/dango-1.5"</span>
+<span class="keyword">export</span> PATH=<span class="variable">${PATH}</span>:<span class="variable">$GAE</span>/lib/django-<span class="number">1.5</span>/django/bin/
+<span class="keyword">export</span> DATABASE_URL=<span class="string">'rdbms://root@&lt;app_id_of_gae&gt;:&lt;database_instance&gt;/&lt;database_name&gt;'</span>
+</code></pre><p>app.yaml 的設定</p>
+<pre><code>env_variables:
+    DJANGO_SETTINGS_MODULE: <span class="comment">'<span class="xmlDocTag">&lt;project_name&gt;</span>.settings'</span>
+    DATABASE_URL: <span class="comment">'mysql://root@<span class="xmlDocTag">&lt;app_id_of_gae&gt;</span>:<span class="xmlDocTag">&lt;database_instance&gt;</span>/<span class="xmlDocTag">&lt;database_name&gt;</span>'</span>
+</code></pre><p>setting.py 內的資料庫設定<br>使用 django-appengine-toolkit packages 作輔助。<br>使用方法待補…</p>
+<h3 id="Eclipse_EE_&amp;&amp;_Eclipse_C/C++">Eclipse EE &amp;&amp; Eclipse C/C++</h3>
+<p>待補<br><strong>#如何升級 OS X 預設所帶的 GCC？</strong><br>使用 Macport…</p>
+<h3 id="讓_Terminal_與_vim_不再那麼色彩單調">讓 Terminal 與 vim 不再那麼色彩單調</h3>
+<p>更改 ~/.vimrc 讓你看程式不再黑黑一片。    </p>
+<pre><code><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span>
+<span class="keyword">syntax</span> <span class="keyword">on</span>
+</code></pre><p>更改 ~/.bash_profile 讓 ls 指令可用顏色區分出不同檔案</p>
+<pre><code><span class="comment"># Adding color to the shell.</span>
+<span class="keyword">export</span> CLICOLOR=<span class="number">1</span>
+<span class="keyword">export</span> LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+alias ls=<span class="string">'ls -G'</span>
+</code></pre><h2 id="二、一些用到的實用小工具">二、一些用到的實用小工具</h2>
+<pre><code><span class="bullet">1. </span>GitX - 一目瞭然地看自己 project 版本管理狀況。
+<span class="bullet">2. </span>iTerm2 - 取代原本 OS X 的終端機。
+<span class="bullet">3. </span>PDF Reader X - 好用的 PDF 檔案瀏覽程式，支援分頁。
+<span class="bullet">4. </span>MPlayerX - OS X 上的播放軟體
+<span class="bullet">5. </span>BetterTouchTool
+<span class="bullet">6. </span>cDock
+<span class="bullet">7. </span>CleanMyDrive
+<span class="bullet">8. </span>XtraFinder
+<span class="bullet">9. </span>DesktopUtility
+<span class="bullet">10. </span>Battery Health
+<span class="bullet">11. </span>The Unarchiver
+<span class="bullet">12. </span>smcFanControl
+</code></pre>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    
+  
+
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">lockys</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/dist/jquery.min.js?v=0.2.2"></script>
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+
+  
+
+  
+  
+
+  
+
+
+  
+</body>
+</html>

@@ -100,8 +100,8 @@
           
           
             
-              <a class="post-title-link" href="/2014/11/15/like-safari-firefox-on-os-x-previous-animation/">
-                讓 OS X 上的 Firefox 像 Safari 一樣有上一頁動畫 
+              <a class="post-title-link" href="/2014/09/09/eclipse-works-with-tomcat-v6/">
+                Eclipse works with Tomcat v6.
               </a>
             
           
@@ -111,7 +111,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              Posted on 2014-11-15
+              Posted on 2014-09-09
             
           </span>
         
@@ -127,82 +127,10 @@
         
 
         
-          <p>最近改用 Firefox 作為主要的瀏覽器，但在 macbook 上使用雙指向右滑動的時候，上一頁是直接返回上一頁<br>而不像 Safari 或 Google Chrome 有個回饋能夠讓我知道我正在做返回上一頁的動作，還真是有點不踏實。<br>於是在網路上找是否有 Plugin 可以讓 Firefox 能夠也能擁有此功能。<br>但是發現原來 Firefox 早在 27 版就已經有這個功能了，就如同 Safari 般，在雙指向右滑動上一頁時會有<br>動畫出現，但再我安裝完後，並沒有預設這個功能，還滿奇怪的，但網路上有人提供了解決之道。</p>
-<p>網路上的解決方法是</p>
-<ol>
-<li>在網址列輸入 about:config</li>
-<li>把 browser.snapshot.limit 的 value 設定為非零的數值</li>
-<li>重新開啟 Firefox</li>
-</ol>
-<p>你的 Firefox 也能像 Safari 般的擁有上一頁的動畫特效了，這樣用起來也舒服許多了。</p>
-<blockquote>
-<p>參考 <a href="http://www.reddit.com/r/apple/comments/1x2zz2/firefox_27_now_supports_safari_style_animated/" target="_blank" rel="external">這篇</a></p>
-</blockquote>
-
-        
-
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-
-        
-
-        
-          <div class="post-eof the-shape"></div>
-        
-      </div>
-    
-  </div>
-
-
-  
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/11/08/note-javascript-hasownproperty-to-understand/">
-                # 筆記 Javascript hasOwnProperty 理解
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-          <span class="post-time">
-            
-              Posted on 2014-11-08
-            
-          </span>
-        
-          
-        
-      </div>
-    </div>
-
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <blockquote>
-<p>Everything in JavaScript acts like an object, with the only two exceptions being null and undefined.<br><a href="http://bonsaiden.github.io/JavaScript-Garden/#object.general" target="_blank" rel="external">Javascript Garden</a></p>
-</blockquote>
+          <p>此篇為設定 Tomcat 和 Eclipse 的一些紀錄，歡迎參考 :)</p>
 
           <div class="post-more-link center">
-            <a class="btn" href="/2014/11/08/note-javascript-hasownproperty-to-understand/#more">
+            <a class="btn" href="/2014/09/09/eclipse-works-with-tomcat-v6/#more">
               Read more &raquo;
             </a>
           </div>
@@ -237,8 +165,8 @@
           
           
             
-              <a class="post-title-link" href="/2014/10/31/my-os-x-environment-and-procedures/">
-                我的 OS X 環境與程式
+              <a class="post-title-link" href="/2014/08/11/make-django/">
+                Untitled
               </a>
             
           
@@ -248,7 +176,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              Posted on 2014-10-31
+              Posted on 2014-08-10
             
           </span>
         
@@ -264,9 +192,75 @@
         
 
         
-          <p>我用的是2012年的 Macbook Air with OS X Yosemite，最近用 Appcleaner 想說清理一些根本不會用到的程式，結果一清，不知原因(可能這並不是一個很好的刪除程式方式…)地導致某些程式無法正常開啟… 嘗試 Google 解法，但不得其解，好吧，只好索性選擇 clean install 系統好了，反正使用了一段時間也多了一些垃圾… 但麻煩的點就在於，開發程式的環境要重新安裝! Okay, 就當作重新複習一次架設環境吧!<br>
+          <hr>
+<p>layout: post<br>title: ‘Make Django and Python interact with MySQL Using module ‘mysqldb’.’<br>date: 2014-08-11 13:46<br>comments: true</p>
+<h2 id="categories:_">categories: </h2>
+<p>今天在OS X上安裝MySQL遇到了一些問題，先在此記錄。</p>
+<p>草稿 - 參考文章<br><a href="http://carl-topham.com/theblog/post/getting-django-python-work-mysql-os-x-1068/" target="_blank" rel="external">http://carl-topham.com/theblog/post/getting-django-python-work-mysql-os-x-1068/</a><br><a href="http://dev.mysql.com/doc/refman/5.0/en/macosx-installation.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.0/en/macosx-installation.html</a><br><a href="http://stackoverflow.com/questions/6474775/setting-the-mysql-root-user-password-on-osx" target="_blank" rel="external">http://stackoverflow.com/questions/6474775/setting-the-mysql-root-user-password-on-osx</a><br><a href="http://stackoverflow.com/questions/1135245/how-to-get-a-list-of-mysql-user-accounts" target="_blank" rel="external">http://stackoverflow.com/questions/1135245/how-to-get-a-list-of-mysql-user-accounts</a><br><a href="http://tsuozoe.pixnet.net/blog/post/21283890-mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E8%AA%9E%E6%B3%95" target="_blank" rel="external">http://tsuozoe.pixnet.net/blog/post/21283890-mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E8%AA%9E%E6%B3%95</a><br><a href="http://stackoverflow.com/questions/454854/no-module-named-mysqldb" target="_blank" rel="external">http://stackoverflow.com/questions/454854/no-module-named-mysqldb</a><br><a href="http://stackoverflow.com/questions/19961239/pelican-3-3-pelican-quickstart-error-valueerror-unknown-locale-utf-8" target="_blank" rel="external">http://stackoverflow.com/questions/19961239/pelican-3-3-pelican-quickstart-error-valueerror-unknown-locale-utf-8</a></p>
+<p>Others:<br>vi ~/.bash_profile<br>export PATH=”/Applications/XAMPP/xamppfiles/bin:$PATH”</p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+          <div class="post-eof the-shape"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/08/03/git-learning-notes/">
+                #1 Create local repository and upload to Github.
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              Posted on 2014-08-03
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>記錄自己學習 git 的筆記，作為日後回顧用   </p>
+
           <div class="post-more-link center">
-            <a class="btn" href="/2014/10/31/my-os-x-environment-and-procedures/#more">
+            <a class="btn" href="/2014/08/03/git-learning-notes/#more">
               Read more &raquo;
             </a>
           </div>
@@ -301,8 +295,8 @@
           
           
             
-              <a class="post-title-link" href="/2014/10/29/eclipse-set-displays-the-row-number-and-style-editor/">
-                Eclipse 的設定 - 顯示行數與更改 Editor 樣式
+              <a class="post-title-link" href="/2014/08/01/record-uploaded-django-to-gae-set/">
+                有關於於上傳 Django 至 GAE 之設定與步驟
               </a>
             
           
@@ -312,7 +306,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              Posted on 2014-10-28
+              Posted on 2014-08-01
             
           </span>
         
@@ -328,9 +322,11 @@
         
 
         
-          <p>Eclipse 是一款很強大的 IDE，可以幫助我們省下很多功夫，但它的一些設定卻也非常地複雜<br>時常要設定一些小功能，都會忘記在哪設定 = =+，因此就由這篇來做一點紀錄!<br>
+          <p>此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，以防之後忘記<br>由於我對於 Django 和 GAE 目前也還在熟悉當中，所以大家可以當作參考參考 :)</p>
+<p><strong>My Environment:</strong><br>OS X 10.9.4、Python 2.7.5、Django 1.4。<br>用 Dango 1.4 的原因是因為目前 GAE 只最高只支援到 Django 1.5 且還是實驗狀態，所以選擇 Django 1.4<br>作為網站開發的 framework。</p>
+
           <div class="post-more-link center">
-            <a class="btn" href="/2014/10/29/eclipse-set-displays-the-row-number-and-style-editor/#more">
+            <a class="btn" href="/2014/08/01/record-uploaded-django-to-gae-set/#more">
               Read more &raquo;
             </a>
           </div>
@@ -365,8 +361,8 @@
           
           
             
-              <a class="post-title-link" href="/2014/10/18/deploy-your-project-to-heroku/">
-                Deploy Your Project to Heroku.
+              <a class="post-title-link" href="/2014/05/06/increase-my-comfort-for-sublime-text-shortcut/">
+                為 Sublime Text 增加自己喜歡的快捷鍵
               </a>
             
           
@@ -376,7 +372,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              Posted on 2014-10-18
+              Posted on 2014-05-06
             
           </span>
         
@@ -392,9 +388,10 @@
         
 
         
-          <p><a href="heroku.com">Heroku</a> 支援上傳大部份可用來開發 web 的語言，主要是用 git 來做 Deploy，所以電腦裡必須裝有 git 這個版本控制程式。基本上上傳步驟都是依照 Heroku 官方的教學步驟進行，但是不免俗的還是會遇到一些問題…所以這篇文章是紀錄了發生什麼問題，以及如何解決。<br>
+          <p>因為有時候需要使用到 Sublime Text 的自動縮排功能，也就是所謂的 reindent<br>來整理程式碼，但 sublime text 預設並未將 reindent 的功能指定給某一個 shorcut<br>因此必須要手動地點選 Edit =&gt; Line =&gt; Reindent，來達成這個功能<br>對於經常使用的人，是一件頗麻煩的事情</p>
+
           <div class="post-more-link center">
-            <a class="btn" href="/2014/10/18/deploy-your-project-to-heroku/#more">
+            <a class="btn" href="/2014/05/06/increase-my-comfort-for-sublime-text-shortcut/#more">
               Read more &raquo;
             </a>
           </div>
@@ -421,7 +418,7 @@
 
           
             <div class="pagination">
-              <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+              <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
             </div>
           
         </div>
