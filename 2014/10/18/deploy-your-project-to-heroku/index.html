@@ -134,12 +134,12 @@ Could <span class="keyword">not</span> find an existing <span class="keyword">pu
 Would you <span class="keyword">like</span> <span class="keyword">to</span> generate one? [Yn]
 Generating <span class="keyword">new</span> SSH <span class="keyword">public</span> <span class="keyword">key</span>.
 Uploading ssh <span class="keyword">public</span> <span class="keyword">key</span> /Users/&lt;username&gt;/.ssh/id_rsa.pub
-</code></pre><p>他會要你輸入帳號密碼，並且要選擇一個 key 上傳至 heroku，如果沒有 key 就依照他的步驟幫你建立<br>我的例子是我已經有 Github 和 Google Apache Engine 的 key 在我的 .ssh 資料夾之下，所以我選擇<br>新建立一個給 heroku 的 key，透過以下指令來建立 key。</p>
+</code></pre><p>他會要你輸入帳號密碼，並且要選擇一個 key 上傳至 heroku，如果沒有 key 就依照他的步驟幫你建立，我的例子是我已經有 Github 和 Google Apache Engine 的 key 在我的 .ssh 資料夾之下，所以我選擇新建立一個給 heroku 的 key，透過以下指令來建立 key。</p>
 <pre><code><span class="variable">$ </span>ssh-keygen -t rsa
 <span class="constant">Enter</span> file <span class="keyword">in</span> which to save the key (<span class="regexp">/Users/</span>&lt;username&gt;<span class="regexp">/.ssh/id</span>_rsa)<span class="symbol">:</span>
 </code></pre><p>輸入 key 的檔案名即可建立，假設輸入的是 heroku，則應該會產生 heroku 和 heroku.pub 這兩個檔案在你現在位於的資料夾之下，再把它們倆個拉到 ~/.ssh/ 資料夾下即可。</p>
 <p>接著再透過以下指令把我們剛剛建立的 key 上傳給 heroku</p>
-<pre><code><span class="input"><span class="prompt">$ heroku key:add &lt;path to your key，這裏是 ~/.ssh/heroku.pub&gt;</span> </span>
+<pre><code>$ heroku <span class="keyword">key</span>:add &lt;path <span class="keyword">to</span> your <span class="keyword">key</span>，這裏是 ~/.ssh/heroku.pub&gt;
 </code></pre><p>再輸入以下指令可以看看現在 heroku 上有我們剛剛上傳的 key</p>
 <pre><code>$ heroku <span class="built_in">keys</span>
 </code></pre><p>若要刪除所有 heroku 上所儲存的 SSH keys，用下面的指令</p>
