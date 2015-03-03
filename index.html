@@ -134,21 +134,12 @@
 </code></pre><p>So that you can manage your model by south.<br>If a Django application is not managed by south and not be syncdb in advance, we should do —initial.</p>
 <pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --initial</span>
 </code></pre><p>But If you have already syncdb a application, there is another way to make the app be managed by the south.<br>Look up the documentation of south.</p>
-<h4 id="Assure_the_app_has_already_been_initialized_by_south-">Assure the app has already been initialized by south.</h4>
-<p>if you changed your schema of database in codes, you can apply the commands below to change the schema.</p>
-<pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --auto</span>
-./manage.py migrate &lt;<span class="constant">AppName</span>&gt;
-</code></pre><p>By applying these two commands, the schema of database has been changed.<br><a href="http://south.readthedocs.org/en/latest/tutorial/part1.html#changing-the-model" target="_blank" rel="external">South Document.</a></p>
-<h2 id="Others…">Others…</h2>
-<h4 id="Manage_Your_Model_in_the_Django_build-in_admin_site-">Manage Your Model in the Django build-in admin site.</h4>
-<p>If you want to manage the model in admin site, you should register them in the admin.py. like this.</p>
-<pre><code><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin
-<span class="comment"># Register your models here.</span>
-<span class="keyword">from</span> &lt;AppName&gt;.models <span class="keyword">import</span> SomeModel
-admin.site.register(SomeModel)
-</code></pre><h4 id="How_to_Connect_to_Google’s_sql_cloud">How to Connect to Google’s sql cloud</h4>
-<pre><code><span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=instance</span><span class="literal">-</span><span class="comment">IP</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=user</span><span class="literal">-</span><span class="comment">name</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">password</span>
-</code></pre>
+
+          <div class="post-more-link center">
+            <a class="btn" href="/2015/03/04/south-record/#more">
+              Read more &raquo;
+            </a>
+          </div>
         
 
       </div>
