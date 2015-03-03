@@ -26,11 +26,11 @@
 
 
 
-  <title> Archive // Notes @ Programming </title>
+  <title> South migration flow record. // Notes @ Programming </title>
 </head>
 
 <body>
-  <div class="container one-column  page-archive ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -86,34 +86,9 @@
             
           
 
-          <div id="posts" class="posts-collapse">
+          <div id="posts" class="posts-expand">
             
-
-  <span class="archive-move-on"></span>
-
-  <span class="archive-page-counter">
-    
-    
-     
-    
-    Um..! 15 posts in total. Keep on posting.
-  </span>
-
   
-
-    
-    
-    
-
-    
-      
-      <div class="collection-title">
-        <h2 id="archive-year-2014">2014</h2>
-      </div>
-    
-    
-
-    
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -124,9 +99,7 @@
           
           
             
-              <a class="post-title-link" href="/2014/09/09/eclipse-works-with-tomcat-v6/">
-                Eclipse works with Tomcat v6.
-              </a>
+              South migration flow record.
             
           
         </h1>
@@ -135,7 +108,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              09-09
+              Posted on 2014-11-14
             
           </span>
         
@@ -145,12 +118,54 @@
     </div>
 
     
+      <div class="post-body">
 
+        
+        
+
+        
+          <h2 id="South">South</h2>
+<h4 id="What_to_do_when_database_schema_of_Django_application_changed-">What to do when database schema of Django application changed.</h4>
+<h4 id="Install_the_south_package">Install the south package</h4>
+<pre><code>pip <span class="operator"><span class="keyword">install</span> south</span>
+</code></pre><p>So that you can manage your model by south.<br>If a Django application is not managed by south and not be syncdb in advance, we should do —initial.</p>
+<pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --initial</span>
+</code></pre><p>But If you have already syncdb a application, there is another way to make the app be managed by the south.<br>Look up the documentation of south.</p>
+<h4 id="Assure_the_app_has_already_been_initialized_by_south-">Assure the app has already been initialized by south.</h4>
+<p>if you changed your schema of database in codes, you can apply the commands below to change the schema.</p>
+<pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --auto</span>
+./manage.py migrate &lt;<span class="constant">AppName</span>&gt;
+</code></pre><p>By applying these two commands, the schema of database has been changed.<br><a href="http://south.readthedocs.org/en/latest/tutorial/part1.html#changing-the-model" target="_blank" rel="external">South Document.</a></p>
+<h2 id="Others…">Others…</h2>
+<h4 id="Manage_Your_Model_in_the_Django_build-in_admin_site-">Manage Your Model in the Django build-in admin site.</h4>
+<p>If you want to manage the model in admin site, you should register them in the admin.py. like this.</p>
+<pre><code><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin
+<span class="comment"># Register your models here.</span>
+<span class="keyword">from</span> &lt;AppName&gt;.models <span class="keyword">import</span> SomeModel
+admin.site.register(SomeModel)
+</code></pre><h4 id="How_to_Connect_to_Google’s_sql_cloud">How to Connect to Google’s sql cloud</h4>
+<pre><code><span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=instance</span><span class="literal">-</span><span class="comment">IP</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=user</span><span class="literal">-</span><span class="comment">name</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">password</span>
+</code></pre>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+      </div>
     
   </div>
 
 
 
+  
+    
   
 
           </div>
@@ -199,20 +214,6 @@
 
 
   
-  <script type="text/javascript">
-    $(document).ready(function () {
-      var clock = 0;
-      function moveOn() {
-        $('.archive-move-on').animate({
-          opacity: clock ? 1 : 0.1
-        }, 1000);
-        clock = !clock;
-        setTimeout(moveOn, 1000);
-      }
-      moveOn();
-    });
-  </script>
-
 
   
   
