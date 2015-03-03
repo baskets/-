@@ -100,6 +100,86 @@
           
           
             
+              <a class="post-title-link" href="/2015/03/04/south-record/">
+                South migration flow record.
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              Posted on 2015-03-03
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <h2 id="South">South</h2>
+<h4 id="What_to_do_when_database_schema_of_Django_application_changed-">What to do when database schema of Django application changed.</h4>
+<h4 id="Install_the_south_package">Install the south package</h4>
+<pre><code>pip <span class="operator"><span class="keyword">install</span> south</span>
+</code></pre><p>So that you can manage your model by south.<br>If a Django application is not managed by south and not be syncdb in advance, we should do —initial.</p>
+<pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --initial</span>
+</code></pre><p>But If you have already syncdb a application, there is another way to make the app be managed by the south.<br>Look up the documentation of south.</p>
+<h4 id="Assure_the_app_has_already_been_initialized_by_south-">Assure the app has already been initialized by south.</h4>
+<p>if you changed your schema of database in codes, you can apply the commands below to change the schema.</p>
+<pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --auto</span>
+./manage.py migrate &lt;<span class="constant">AppName</span>&gt;
+</code></pre><p>By applying these two commands, the schema of database has been changed.<br><a href="http://south.readthedocs.org/en/latest/tutorial/part1.html#changing-the-model" target="_blank" rel="external">South Document.</a></p>
+<h2 id="Others…">Others…</h2>
+<h4 id="Manage_Your_Model_in_the_Django_build-in_admin_site-">Manage Your Model in the Django build-in admin site.</h4>
+<p>If you want to manage the model in admin site, you should register them in the admin.py. like this.</p>
+<pre><code><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin
+<span class="comment"># Register your models here.</span>
+<span class="keyword">from</span> &lt;AppName&gt;.models <span class="keyword">import</span> SomeModel
+admin.site.register(SomeModel)
+</code></pre><h4 id="How_to_Connect_to_Google’s_sql_cloud">How to Connect to Google’s sql cloud</h4>
+<pre><code><span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=instance</span><span class="literal">-</span><span class="comment">IP</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=user</span><span class="literal">-</span><span class="comment">name</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">password</span>
+</code></pre>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+          <div class="post-eof the-shape"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2014/11/15/like-safari-firefox-on-os-x-previous-animation/">
                 讓 OS X 上的 Firefox 像 Safari 一樣有上一頁動畫 
               </a>
@@ -139,86 +219,6 @@
 <p>參考 <a href="http://www.reddit.com/r/apple/comments/1x2zz2/firefox_27_now_supports_safari_style_animated/" target="_blank" rel="external">這篇</a></p>
 </blockquote>
 
-        
-
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-
-        
-
-        
-          <div class="post-eof the-shape"></div>
-        
-      </div>
-    
-  </div>
-
-
-  
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/11/15/south-record/">
-                South migration flow record.
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-          <span class="post-time">
-            
-              Posted on 2014-11-14
-            
-          </span>
-        
-          
-        
-      </div>
-    </div>
-
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <h2 id="South">South</h2>
-<h4 id="What_to_do_when_database_schema_of_Django_application_changed-">What to do when database schema of Django application changed.</h4>
-<h4 id="Install_the_south_package">Install the south package</h4>
-<pre><code>pip <span class="operator"><span class="keyword">install</span> south</span>
-</code></pre><p>So that you can manage your model by south.<br>If a Django application is not managed by south and not be syncdb in advance, we should do —initial.</p>
-<pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --initial</span>
-</code></pre><p>But If you have already syncdb a application, there is another way to make the app be managed by the south.<br>Look up the documentation of south.</p>
-<h4 id="Assure_the_app_has_already_been_initialized_by_south-">Assure the app has already been initialized by south.</h4>
-<p>if you changed your schema of database in codes, you can apply the commands below to change the schema.</p>
-<pre><code><span class="input"><span class="prompt">./manage.py schemamigration &lt;AppName&gt;</span> --auto</span>
-./manage.py migrate &lt;<span class="constant">AppName</span>&gt;
-</code></pre><p>By applying these two commands, the schema of database has been changed.<br><a href="http://south.readthedocs.org/en/latest/tutorial/part1.html#changing-the-model" target="_blank" rel="external">South Document.</a></p>
-<h2 id="Others…">Others…</h2>
-<h4 id="Manage_Your_Model_in_the_Django_build-in_admin_site-">Manage Your Model in the Django build-in admin site.</h4>
-<p>If you want to manage the model in admin site, you should register them in the admin.py. like this.</p>
-<pre><code><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin
-<span class="comment"># Register your models here.</span>
-<span class="keyword">from</span> &lt;AppName&gt;.models <span class="keyword">import</span> SomeModel
-admin.site.register(SomeModel)
-</code></pre><h4 id="How_to_Connect_to_Google’s_sql_cloud">How to Connect to Google’s sql cloud</h4>
-<pre><code><span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=instance</span><span class="literal">-</span><span class="comment">IP</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=user</span><span class="literal">-</span><span class="comment">name</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">password</span>
-</code></pre>
         
 
       </div>
