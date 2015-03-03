@@ -100,6 +100,84 @@
           
           
             
+              <a class="post-title-link" href="/2015/03/04/django-model/">
+                create django model 備忘稿
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              Posted on 2015-03-03
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <h2 id="Django_model_建立注意事項">Django model 建立注意事項</h2>
+<h4 id="setting-py">setting.py</h4>
+<p>記得在 INSTALLED_APPS 裡加入該 APP。</p>
+<pre><code>INSTALLED_APPS = (<span class="keyword">...</span>, <span class="string">'your new app'</span>)
+</code></pre><h4 id="admin-py">admin.py</h4>
+<p>記得註冊 Model，否則在管理頁面會看不到。</p>
+<pre><code><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin
+<span class="keyword">from</span> allpay_payment.models <span class="keyword">import</span> SomeModel
+admin.site.register(SomeModel)
+</code></pre><h4 id="syncdb">syncdb</h4>
+<p>若該 APP 的 Model 要被 south 所管理，要輸入以下指令(for Django &lt; 1.6)</p>
+<pre><code><span class="keyword">python</span> manage.<span class="keyword">py</span> schemamigration &lt;app-name&gt; --initial
+<span class="keyword">python</span> manage.<span class="keyword">py</span> schemamigration &lt;app-name&gt; --auto
+<span class="keyword">python</span> manage.<span class="keyword">py</span> migrate &lt;app-name&gt;
+</code></pre><p>若否，則可直接</p>
+<pre><code><span class="keyword">python</span> manage.<span class="keyword">py</span> syncdb
+</code></pre><h4 id="若是在_localhost">若是在 localhost</h4>
+<p>記得重新啟動 server，否則管理頁面也會不變。</p>
+<pre><code><span class="keyword">python</span> manage.<span class="keyword">py</span> runserver
+</code></pre>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+          <div class="post-eof the-shape"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/03/04/south-record/">
                 South migration flow record.
               </a>
@@ -353,70 +431,6 @@
         
 
         
-          <div class="post-eof the-shape"></div>
-        
-      </div>
-    
-  </div>
-
-
-  
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/10/29/eclipse-set-displays-the-row-number-and-style-editor/">
-                Eclipse 的設定 - 顯示行數與更改 Editor 樣式
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-          <span class="post-time">
-            
-              Posted on 2014-10-28
-            
-          </span>
-        
-          
-        
-      </div>
-    </div>
-
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <p>Eclipse 是一款很強大的 IDE，可以幫助我們省下很多功夫，但它的一些設定卻也非常地複雜<br>時常要設定一些小功能，都會忘記在哪設定 = =+，因此就由這篇來做一點紀錄!<br>
-          <div class="post-more-link center">
-            <a class="btn" href="/2014/10/29/eclipse-set-displays-the-row-number-and-style-editor/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-
-        
-
-        
       </div>
     
   </div>
@@ -428,7 +442,7 @@
 
           
             <div class="pagination">
-              <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+              <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
             </div>
           
         </div>

@@ -26,11 +26,11 @@
 
 
 
-  <title> Category: Programming, Django // Notes @ Programming </title>
+  <title> Archive // Notes @ Programming </title>
 </head>
 
 <body>
-  <div class="container one-column ">
+  <div class="container one-column  page-archive ">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -88,7 +88,31 @@
 
           <div id="posts" class="posts-collapse">
             
+
+  <span class="archive-move-on"></span>
+
+  <span class="archive-page-counter">
+    
+    
+     
+    
+    Um..! 16 posts in total. Keep on posting.
+  </span>
+
   
+
+    
+    
+    
+
+    
+      
+      <div class="collection-title">
+        <h2 id="archive-year-1974">1974</h2>
+      </div>
+    
+    
+
     
 
   <div class="post post-type-normal ">
@@ -100,8 +124,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/03/04/django-model/">
-                create django model 備忘稿
+              <a class="post-title-link" href="/1975/01/01/first-post/">
+                First Post!
               </a>
             
           
@@ -111,7 +135,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              03-03
+              12-31
             
           </span>
         
@@ -126,10 +150,15 @@
   </div>
 
 
+
   
 
           </div>
 
+          
+            <div class="pagination">
+              <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo;</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
+            </div>
           
         </div>
       </div>
@@ -174,6 +203,20 @@
 
 
   
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var clock = 0;
+      function moveOn() {
+        $('.archive-move-on').animate({
+          opacity: clock ? 1 : 0.1
+        }, 1000);
+        clock = !clock;
+        setTimeout(moveOn, 1000);
+      }
+      moveOn();
+    });
+  </script>
+
 
   
   

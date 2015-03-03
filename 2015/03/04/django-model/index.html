@@ -26,11 +26,11 @@
 
 
 
-  <title> Category: Programming, Django // Notes @ Programming </title>
+  <title> create django model 備忘稿 // Notes @ Programming </title>
 </head>
 
 <body>
-  <div class="container one-column ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -86,10 +86,9 @@
             
           
 
-          <div id="posts" class="posts-collapse">
+          <div id="posts" class="posts-expand">
             
   
-    
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -100,9 +99,7 @@
           
           
             
-              <a class="post-title-link" href="/2015/03/04/django-model/">
-                create django model 備忘稿
-              </a>
+              create django model 備忘稿
             
           
         </h1>
@@ -111,7 +108,7 @@
       <div class="post-meta">
           <span class="post-time">
             
-              03-03
+              Posted on 2015-03-03
             
           </span>
         
@@ -121,11 +118,52 @@
     </div>
 
     
+      <div class="post-body">
 
+        
+        
+
+        
+          <h2 id="Django_model_建立注意事項">Django model 建立注意事項</h2>
+<h4 id="setting-py">setting.py</h4>
+<p>記得在 INSTALLED_APPS 裡加入該 APP。</p>
+<pre><code>INSTALLED_APPS = (<span class="keyword">...</span>, <span class="string">'your new app'</span>)
+</code></pre><h4 id="admin-py">admin.py</h4>
+<p>記得註冊 Model，否則在管理頁面會看不到。</p>
+<pre><code><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin
+<span class="keyword">from</span> allpay_payment.models <span class="keyword">import</span> SomeModel
+admin.site.register(SomeModel)
+</code></pre><h4 id="syncdb">syncdb</h4>
+<p>若該 APP 的 Model 要被 south 所管理，要輸入以下指令(for Django &lt; 1.6)</p>
+<pre><code><span class="keyword">python</span> manage.<span class="keyword">py</span> schemamigration &lt;app-name&gt; --initial
+<span class="keyword">python</span> manage.<span class="keyword">py</span> schemamigration &lt;app-name&gt; --auto
+<span class="keyword">python</span> manage.<span class="keyword">py</span> migrate &lt;app-name&gt;
+</code></pre><p>若否，則可直接</p>
+<pre><code><span class="keyword">python</span> manage.<span class="keyword">py</span> syncdb
+</code></pre><h4 id="若是在_localhost">若是在 localhost</h4>
+<p>記得重新啟動 server，否則管理頁面也會不變。</p>
+<pre><code><span class="keyword">python</span> manage.<span class="keyword">py</span> runserver
+</code></pre>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+      </div>
     
   </div>
 
 
+
+  
+    
   
 
           </div>
