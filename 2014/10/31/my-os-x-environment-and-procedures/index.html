@@ -128,12 +128,12 @@
 <h2 id="一、程式開發環境重建">一、程式開發環境重建</h2>
 <p>首先，再重灌之前，我已經先備份了 ~/.bash_profile，因為裡面儲存了一些重要的設定<br>所以重灌後，直接在 ~/ 底下建立 .bash_profile 就好了。</p>
 <p>之後我整理出自己的程式開發需求：</p>
-<h3 id="以_Django_作為網站開發的_Framework，並以_Google_Apache_Engine_為_Hosting_Service-">以 Django 作為網站開發的 Framework，並以 Google Apache Engine 為 Hosting Service.</h3>
+<h3 id="Django_為網站開發的_Framework，Google_Apache_Engine_為_Hosting_Service-">Django 為網站開發的 Framework，Google Apache Engine 為 Hosting Service.</h3>
 <blockquote>
-<p>這裏是假設已經有一個現成的 Django 專案為前提，但原則上做完這些事情，也可以以 Django 架站。</p>
+<p>這裏是假設已經有一個可跑的 Django 專案，但原則上做完這些事情，也可以以 Django 架站。</p>
 </blockquote>
 <p>我現在用 Pycharm 作為主要的 IDE，Sublime Text 為輔，而 Terminal 使用 iTerm2 來取代內建的終端機。<br>Python &amp; easy_install (已內建，Good!)<br>首先安裝 PIP - Python 的 Packages 管理程式。</p>
-<pre><code>$ <span class="built_in">sudo</span> easy_install pip 
+<pre><code>$ <span class="built_in">sudo</span> easy_install pip
 </code></pre><p>接著安裝 <a href="http://virtualenv.readthedocs.org/en/latest/virtualenv.html" target="_blank" rel="external">virtualenv</a> &amp; <a href="http://virtualenvwrapper.readthedocs.org/en/latest/install.html" target="_blank" rel="external">virtualenvwrapper</a><br>因為每個專案開發所需的環境可能不盡相同，virtualenvwrapper 幫助我們管理這些開發環境。</p>
 <pre><code><span class="variable">$ </span>pip install virtualenv
 <span class="variable">$ </span>pip install virtualenvwrapper
@@ -153,7 +153,7 @@
 <pre><code>$ (virtualEnvName) <span class="keyword">python</span> manage.<span class="keyword">py</span> runserver
 </code></pre><p>接著因為我使用 Google Apache Engine 來 Hosting Django 的專案所以必須安裝下面兩支程式。</p>
 <ol>
-<li><a href="https://cloud.google.com/sdk/" target="_blank" rel="external"><strong>Google Cloud SDK</strong></a> </li>
+<li><a href="https://cloud.google.com/sdk/" target="_blank" rel="external"><strong>Google Cloud SDK</strong></a></li>
 <li><a href="https://cloud.google.com/appengine/downloads" target="_blank" rel="external"><strong>Google AppEngineLauncher</strong></a>  </li>
 </ol>
 <blockquote>
@@ -184,7 +184,7 @@
 <h3 id="Eclipse_EE_&amp;&amp;_Eclipse_C/C++">Eclipse EE &amp;&amp; Eclipse C/C++</h3>
 <p>待補<br><strong>#如何升級 OS X 預設所帶的 GCC？</strong><br>使用 Macport…</p>
 <h3 id="讓_Terminal_與_vim_不再那麼色彩單調">讓 Terminal 與 vim 不再那麼色彩單調</h3>
-<p>更改 ~/.vimrc 讓你看程式不再黑黑一片。    </p>
+<p>更改 ~/.vimrc 讓你看程式不再黑黑一片。</p>
 <pre><code><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span>
 <span class="keyword">syntax</span> <span class="keyword">on</span>
 </code></pre><p>更改 ~/.bash_profile 讓 ls 指令可用顏色區分出不同檔案</p>
