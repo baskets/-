@@ -145,7 +145,7 @@
 <p>接著若您創立了一個虛擬環境，您可用以下指令進入該虛擬環境，然後再安裝 Django</p>
 <pre><code><span class="variable">$ </span>workon &lt;you-virtual-env-name&gt;
 <span class="variable">$ </span>pip instal django == <span class="number">1.5</span> <span class="comment"># install Django 1.5 for example.</span>
-</code></pre><p>此時開啟 Pycharm 並開啟我的 Django 專案資料夾，並設定要用哪一個 Python intepreter<br>(你可能會有很多個在你電腦裡，這裡我選擇的是我產生的虛擬環境下的 Python)<br>這時 Pycharm 會提醒你有哪些尚未安裝的 Python Packages，但是你的 Project 有用到的，只要點 install，Pycharm就會幫忙你安裝好這些 Packages，這真是ㄧ個非常方便又懶人的功能… 或者你也不需要靠這功能<br>可以用以下指令將你有使用的 Packages 輸出成一個 requirement.txt 檔(裡面會是你 Package 的 list.)</p>
+</code></pre><p>此時開啟 Pycharm 並開啟我的 Django 專案資料夾，並設定要用哪一個 Python intepreter<br>(你可能會有很多個在你電腦裡，這裡我選擇的是我產生的虛擬環境下的 Python)<br>這時 Pycharm 會提醒你有哪些尚未安裝的 Python Packages，但是你的 Project 有用到的，只要點 install，Pycharm就會幫忙你安裝好這些 Packages，這真是ㄧ個非常方便又懶人的功能… 或者你也不需要靠這功能，可以用以下指令將你有使用的 Packages 輸出成一個 requirement.txt 檔(裡面會是你 Package 的 list.)</p>
 <pre><code><span class="input"><span class="prompt">$ pip freeze &gt;</span> requirements.txt</span>
 </code></pre><p>再下指令即可一次安裝完所有 Packages，就不需要一個一個 install packages 了。</p>
 <pre><code><span class="variable">$ </span>pip install -r requirements.txt
@@ -167,6 +167,7 @@
 <h3 id="1-使用_django-appengine-toolkit_packages_作輔助">1.使用 django-appengine-toolkit packages 作輔助</h3>
 <p>setting.py 內的資料庫設定</p>
 <pre><code><span class="keyword">import</span> appengine_toolkit
+<span class="keyword">import</span> os
 APPENGINE_TOOLKIT = {
   <span class="string">'APP_YAML'</span>: os.path.<span class="keyword">join</span>(BASE_DIR, <span class="string">'app.yaml'</span>),
 }
@@ -197,9 +198,8 @@ DATABASES = {<span class="string">'default'</span>:appengine_toolkit.config(),}
 <span class="keyword">export</span> PATH=<span class="variable">${PATH}</span>:<span class="variable">$GAE</span>/lib/django-<span class="number">1.5</span>/django/bin/
 <span class="keyword">export</span> DATABASE_URL=<span class="string">'rdbms://root@&lt;app_id_of_gae&gt;:&lt;database_instance&gt;/&lt;database_name&gt;'</span>
 </code></pre><p>透過以下指令進入 cloud sql 的 mysql&gt;</p>
-<pre><code><span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=instance</span><span class="literal">-</span><span class="comment">IP</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=user</span><span class="literal">-</span><span class="comment">name</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">password</span>
-</code></pre><h3 id="Eclipse_EE_&amp;&amp;_Eclipse_C/C++">Eclipse EE &amp;&amp; Eclipse C/C++</h3>
-<p>待補<br><strong>#如何升級 OS X 預設所帶的 GCC？</strong><br>使用 Macport…</p>
+<pre><code><span class="comment">$</span> <span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=instance</span><span class="literal">-</span><span class="comment">IP</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=user</span><span class="literal">-</span><span class="comment">name</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">password</span>
+</code></pre><p><strong>#如何升級 OS X 預設所帶的 GCC？</strong><br>使用 Macport…</p>
 <h3 id="讓_Terminal_與_vim_不再那麼色彩單調">讓 Terminal 與 vim 不再那麼色彩單調</h3>
 <p>更改 ~/.vimrc 讓你看程式不再黑黑一片。</p>
 <pre><code><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span>
