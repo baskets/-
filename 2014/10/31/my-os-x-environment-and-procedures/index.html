@@ -159,29 +159,46 @@
 <blockquote>
 <p>安裝完 Google AppEngineLauncher 後，記得開啟該程式，他會問你是否 symlinks，記得要。</p>
 </blockquote>
-<p>接著必須產生 Google 的 oauth2 credential，才可在本地的 Terminal 上傳專案與管理 Cloud SQL 的資料庫 instance。</p>
-<p><strong>＃如何產生 Google 的 oauth2 之 credential file?</strong><br>可以使用以下指令來產生。</p>
+<p>接著必須產生 Google 的 oauth 2.0 credential，才可在本地的 Terminal 上傳專案與管理 Cloud SQL 的資料庫 instance。</p>
+<p><strong>＃如何產生 Google 的 oauth 2.0 之 credential file?</strong><br>可以使用以下指令來產生。</p>
 <pre><code><span class="variable">$ </span>gcloud config set account &lt;google-mail&gt;
 <span class="variable">$ </span>gcloud auth login <span class="comment"># Get credentials for the tools in the Google Cloud SDK via a web flow.</span>
-</code></pre><p>或直接在 Terminal 下 syncdb 指令，當然你必須先在 <strong>~/.bash_profile</strong> 、<strong>app.yaml</strong> 和 <strong>setting.py</strong> 這三個檔案裡面設定好與 Google Cloud SQL 內的資料庫 instance 做連結的程式碼(下面有筆記)。</p>
+</code></pre><p>或直接在 Terminal 下 syncdb 指令，但你必須先在 <strong>my-django-project/setting.py</strong> 裡面設定好與 Google Cloud SQL 內的資料庫 instance 做連結的程式碼，下面兩種方式。</p>
+<h3 id="1-使用_django-appengine-toolkit_packages_作輔助">1.使用 django-appengine-toolkit packages 作輔助</h3>
+<p>setting.py 內的資料庫設定</p>
+<pre><code><span class="keyword">import</span> appengine_toolkit
+APPENGINE_TOOLKIT = {
+  <span class="string">'APP_YAML'</span>: os.path.<span class="keyword">join</span>(BASE_DIR, <span class="string">'app.yaml'</span>),
+}
+DATABASES = {<span class="string">'default'</span>:appengine_toolkit.config(),}
+</code></pre><p>app.yaml 也要別忘了要設定</p>
+<pre><code>env_variables:
+    DJANGO_SETTINGS_MODULE: <span class="comment">'<span class="xmlDocTag">&lt;project_name&gt;</span>.settings'</span>
+    DATABASE_URL: <span class="comment">'mysql://root@<span class="xmlDocTag">&lt;app_id_of_gae&gt;</span>:<span class="xmlDocTag">&lt;database_instance&gt;</span>/<span class="xmlDocTag">&lt;database_name&gt;</span>'</span>
+</code></pre><h3 id="2-直接設定不透過_django-appengine-toolkit_與_Cloud_SQL_做連結">2.直接設定不透過 django-appengine-toolkit 與 Cloud SQL 做連結</h3>
+<pre><code>DATABASES = {
+  <span class="string">'default'</span>: {
+    <span class="string">'ENGINE'</span>: <span class="string">'google.appengine.ext.django.backends.rdbms'</span>,
+    <span class="string">'INSTANCE'</span>: <span class="string">'&lt;project-id&gt;:&lt;database-instance&gt;'</span>,
+    <span class="string">'NAME'</span>: <span class="string">'&lt;your-database-name&gt;'</span>,
+    <span class="string">'USER'</span>: <span class="string">'root'</span>,
+  }
+}
+</code></pre><p>設定完與 Cloud SQL 的 instnace 連結後，下以下指令</p>
 <pre><code>$ <span class="keyword">python</span> manage.<span class="keyword">py</span> syncdb # 此時會跳出網頁要你登入你的 Google 帳號
 </code></pre><p>即可於 ~/ 底下產生 .googlesql_oauth2.dat 檔，便可使用以下指令 deploy 你的專案</p>
 <blockquote>
 <p>若已經存在 .googlesql_oauth2.dat，但是產生 InternalError: (0, u’End user Google Account not authorized.’) 的錯誤，可以刪除原有的 .googlesql_oauth2.dat，再重新下 syncdb 指令產生一次</p>
 </blockquote>
 <pre><code>$ appcfg --oauth2 update . <span class="comment">// 上傳專案至 GAE</span>
-</code></pre><p>以及在 localhost 端 accesss Google SQL 資料庫的權限。<br>現在你 run 在 localhost 的網站，也可以直接 access cloud SQL 下的 database instance。</p>
-<p><strong># 如何與 Cloud SQL 做連結？</strong><br>~/.bash_profile 的設定</p>
+</code></pre><p><strong># 如何與 Cloud SQL 做連結，直接透過 Termial access cloud sql 內的資料庫？</strong><br>需做 ~/.bash_profile 的設定</p>
 <pre><code><span class="keyword">export</span> GAE=<span class="string">"/usr/local/google_appengine"</span>
 <span class="keyword">export</span> PYTHONPATH=<span class="string">"<span class="variable">$PYTHONPATH</span>:<span class="variable">$GAE</span>:<span class="variable">$GAE</span>/lib/dango-1.5"</span>
 <span class="keyword">export</span> PATH=<span class="variable">${PATH}</span>:<span class="variable">$GAE</span>/lib/django-<span class="number">1.5</span>/django/bin/
 <span class="keyword">export</span> DATABASE_URL=<span class="string">'rdbms://root@&lt;app_id_of_gae&gt;:&lt;database_instance&gt;/&lt;database_name&gt;'</span>
-</code></pre><p>app.yaml 的設定</p>
-<pre><code>env_variables:
-    DJANGO_SETTINGS_MODULE: <span class="comment">'<span class="xmlDocTag">&lt;project_name&gt;</span>.settings'</span>
-    DATABASE_URL: <span class="comment">'mysql://root@<span class="xmlDocTag">&lt;app_id_of_gae&gt;</span>:<span class="xmlDocTag">&lt;database_instance&gt;</span>/<span class="xmlDocTag">&lt;database_name&gt;</span>'</span>
-</code></pre><p>setting.py 內的資料庫設定<br>使用 django-appengine-toolkit packages 作輔助。<br>使用方法待補…</p>
-<h3 id="Eclipse_EE_&amp;&amp;_Eclipse_C/C++">Eclipse EE &amp;&amp; Eclipse C/C++</h3>
+</code></pre><p>透過以下指令進入 cloud sql 的 mysql&gt;</p>
+<pre><code><span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=instance</span><span class="literal">-</span><span class="comment">IP</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=user</span><span class="literal">-</span><span class="comment">name</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">password</span>
+</code></pre><h3 id="Eclipse_EE_&amp;&amp;_Eclipse_C/C++">Eclipse EE &amp;&amp; Eclipse C/C++</h3>
 <p>待補<br><strong>#如何升級 OS X 預設所帶的 GCC？</strong><br>使用 Macport…</p>
 <h3 id="讓_Terminal_與_vim_不再那麼色彩單調">讓 Terminal 與 vim 不再那麼色彩單調</h3>
 <p>更改 ~/.vimrc 讓你看程式不再黑黑一片。</p>
