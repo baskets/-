@@ -152,7 +152,7 @@
                  <span class="string">'b_app'</span>,
                  )
 </code></pre><p>The priority of these some.js files in different directories (but the same structure ‘static/js’) will be…</p>
-<h3 id="site/static/js/some-js_—-&gt;_site/a_app/static/js/some-js_—-&gt;_site/b_app/static/js/some-js">site/static/js/some.js —-&gt;  site/a_app/static/js/some.js —-&gt; site/b_app/static/js/some.js</h3>
+<p><em>site/static/js/some.js —-&gt;  site/a_app/static/js/some.js —-&gt; site/b_app/static/js/some.js</em></p>
 <p>So the site/static/js/some.js will be found by finder first.</p>
 <p>But if we change the order of apps in ‘INSTALLED_APPS’:</p>
 <pre><code> <span class="title">INSTALED_APPS</span> = (
@@ -160,7 +160,7 @@
                  <span class="string">'a_app'</span>,
                  )
 </code></pre><p>The priority will be changed to…</p>
-<h3 id="site/static/js/some-js_—-&gt;_site/b_app/static/js/some-js_—-&gt;_site/a_app/static/js/some-js">site/static/js/some.js —-&gt;  site/b_app/static/js/some.js —-&gt; site/a_app/static/js/some.js</h3>
+<p><em>site/static/js/some.js —-&gt;  site/b_app/static/js/some.js —-&gt; site/a_app/static/js/some.js</em></p>
 
         
 
