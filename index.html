@@ -216,7 +216,7 @@
     <span class="string">|__ js</span>
           <span class="string">|__ some.js</span>
 </code></pre><p>It is depended on the variable ‘INSTALED_APPS’ declared in site/settings.py.</p>
-<pre><code> <span class="title">INSTALED_APPS</span> = (
+<pre><code> <span class="title">INSTALLED_APPS</span> = (
                  <span class="string">'a_app'</span>,
                  <span class="string">'b_app'</span>,
                  )
@@ -224,12 +224,12 @@
 <p><em>site/static/js/some.js —-&gt;  site/a_app/static/js/some.js —-&gt; site/b_app/static/js/some.js</em></p>
 <p>So the site/static/js/some.js will be found by finder first.</p>
 <p>But if we change the order of apps in ‘INSTALLED_APPS’:</p>
-<pre><code> <span class="title">INSTALED_APPS</span> = (
+<pre><code> <span class="title">INSTALLED_APPS</span> = (
                  <span class="string">'b_app'</span>,
                  <span class="string">'a_app'</span>,
                  )
 </code></pre><p>The priority will be changed to…</p>
-<p><em>site/static/js/some.js —-&gt;  site/b_app/static/js/some.js —-&gt; site/a_app/static/js/some.js</em></p>
+<p><em>site/static/js/some.js —-&gt;  site/b_app/static/js/some.js —-&gt; site/a_app/static/js/some.js</em><br>This is a note of experiment done by my own, not for sure the mechanism is right.<br>I’ll check out the documentation of Django for correct mechanism :-)</p>
 </span>
         
       
