@@ -1,11 +1,15 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html class="theme-next use-motion ">
 <head>
-  
+    
 
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -15,7 +19,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
 
 
     <meta name="description" content="Take notes to save more time" />
@@ -28,28 +36,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
+
+
+<meta name="description" content="Take notes to save more time">
+<meta property="og:type" content="website">
+<meta property="og:title" content="= lockys['learning'];">
+<meta property="og:url" content="http://yoursite.com/archives/2014/page/2/">
+<meta property="og:site_name" content="= lockys['learning'];">
+<meta property="og:description" content="Take notes to save more time">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="= lockys['learning'];">
+<meta name="twitter:description" content="Take notes to save more time">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
-    analytics: {
-      google: ''
-    },
+    scheme: '',
     sidebar: 'post'
   };
 </script>
 
-
-
-
-  <title> 歸檔 // = lockys['learning']; </title>
+    <title> 歸檔 // = lockys['learning']; </title>
 </head>
-
-<body>
-  <!--[if lte IE 8]>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+<!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
       <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
@@ -59,14 +71,15 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column  page-archive ">
-    <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+
+
+<div class="container one-column  page-archive ">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
         <i class="icon-logo"></i>
       </span>
@@ -83,7 +96,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -91,7 +104,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
+          <a href="/" rel="section">
             <i class="menu-item-icon icon-home"></i> <br />
             首頁
           </a>
@@ -99,7 +112,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
+          <a href="/archives" rel="section">
             <i class="menu-item-icon icon-archives"></i> <br />
             歸檔
           </a>
@@ -107,7 +120,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
+          <a href="/tags" rel="section">
             <i class="menu-item-icon icon-tags"></i> <br />
             標籤
           </a>
@@ -117,18 +130,18 @@
   
 
   
-</div>
+</nav>
 
 
-      </div>
-    </div>
+        </div>
+    </header>
 
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
 
-  <div id="posts" class="posts-collapse">
+  <section id="posts" class="posts-collapse">
     <span class="archive-move-on"></span>
 
     <span class="archive-page-counter">
@@ -156,23 +169,23 @@
 
       
 
-  <div class="post post-type-normal">
-    <div class="post-header">
+  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <div class="post-title">
+      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2014/09/09/eclipse-works-with-tomcat-v6/">
-              Eclipse works with Tomcat v6.
+            <a class="post-title-link" href="/2014/09/09/eclipse-works-with-tomcat-v6/" itemprop="url">
+              <span itemprop="name">Eclipse works with Tomcat v6.</span>
             </a>
         
-      </div>
+      </h1>
 
       <div class="post-meta">
-        <span class="post-time"> 09-09 </span>
+        <time class="post-time" datetime="2014-09-09T06:48:00.000Z" itemprop="dateCreated" content="2014-09-09"> 09-09 </time>
       </div>
 
-    </div>
-  </div>
+    </header>
+  </article>
 
 
 
@@ -187,23 +200,23 @@
 
       
 
-  <div class="post post-type-normal">
-    <div class="post-header">
+  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <div class="post-title">
+      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2014/08/11/make-django/">
-              Using module mysqldb, python work with MySQL
+            <a class="post-title-link" href="/2014/08/11/make-django/" itemprop="url">
+              <span itemprop="name">Using module mysqldb, python work with MySQL</span>
             </a>
         
-      </div>
+      </h1>
 
       <div class="post-meta">
-        <span class="post-time"> 08-11 </span>
+        <time class="post-time" datetime="2014-08-11T05:46:00.000Z" itemprop="dateCreated" content="2014-08-11"> 08-11 </time>
       </div>
 
-    </div>
-  </div>
+    </header>
+  </article>
 
 
 
@@ -218,23 +231,23 @@
 
       
 
-  <div class="post post-type-normal">
-    <div class="post-header">
+  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <div class="post-title">
+      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2014/08/03/git-learning-notes/">
-              #1 Create local repository and upload to Github.
+            <a class="post-title-link" href="/2014/08/03/git-learning-notes/" itemprop="url">
+              <span itemprop="name">#1 Create local repository and upload to Github.</span>
             </a>
         
-      </div>
+      </h1>
 
       <div class="post-meta">
-        <span class="post-time"> 08-03 </span>
+        <time class="post-time" datetime="2014-08-03T00:40:00.000Z" itemprop="dateCreated" content="2014-08-03"> 08-03 </time>
       </div>
 
-    </div>
-  </div>
+    </header>
+  </article>
 
 
 
@@ -249,23 +262,23 @@
 
       
 
-  <div class="post post-type-normal">
-    <div class="post-header">
+  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <div class="post-title">
+      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2014/08/01/record-uploaded-django-to-gae-set/">
-              有關於於上傳 Django 至 GAE 之設定與步驟
+            <a class="post-title-link" href="/2014/08/01/record-uploaded-django-to-gae-set/" itemprop="url">
+              <span itemprop="name">有關於於上傳 Django 至 GAE 之設定與步驟</span>
             </a>
         
-      </div>
+      </h1>
 
       <div class="post-meta">
-        <span class="post-time"> 08-01 </span>
+        <time class="post-time" datetime="2014-08-01T06:05:00.000Z" itemprop="dateCreated" content="2014-08-01"> 08-01 </time>
       </div>
 
-    </div>
-  </div>
+    </header>
+  </article>
 
 
 
@@ -280,44 +293,45 @@
 
       
 
-  <div class="post post-type-normal">
-    <div class="post-header">
+  <article class="post post-type-normal"itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <div class="post-title">
+      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2014/05/06/increase-my-comfort-for-sublime-text-shortcut/">
-              為 Sublime Text 增加自己喜歡的快捷鍵
+            <a class="post-title-link" href="/2014/05/06/increase-my-comfort-for-sublime-text-shortcut/" itemprop="url">
+              <span itemprop="name">為 Sublime Text 增加自己喜歡的快捷鍵</span>
             </a>
         
-      </div>
+      </h1>
 
       <div class="post-meta">
-        <span class="post-time"> 05-06 </span>
+        <time class="post-time" datetime="2014-05-06T03:46:00.000Z" itemprop="dateCreated" content="2014-05-06"> 05-06 </time>
       </div>
 
-    </div>
-  </div>
+    </header>
+  </article>
 
 
 
     
 
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/archives/2014/">&laquo;</a><a class="page-number" href="/archives/2014/">1</a><span class="page-number current">2</span>
-  </div>
+  </nav>
 
 
 
+            </div>
+
+            
+
+            
         </div>
 
         
-      </div>
-
-
-      
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -327,18 +341,18 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="lockys" />
-          <p class="site-author-name">lockys</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="lockys" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">lockys</p>
         </div>
-        <p class="site-description motion-element">Take notes to save more time</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">Take notes to save more time</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">17</span>
@@ -360,7 +374,7 @@
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
 
@@ -371,26 +385,30 @@
         
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
-  <span class="author">lockys</span>
+  <span class="author" itemprop="copyrightHolder">lockys</span>
 </div>
 
 <div class="powered-by">
@@ -400,19 +418,19 @@
 <div class="theme-info">
   主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT
   </a>
 </div>
 
 
 
-      </div>
-    </div>
+        </div>
+    </footer>
 
     <div class="back-to-top"></div>
-  </div>
+</div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
@@ -422,25 +440,32 @@
     </script>
   
 
+  
+    
+    
 
   
+
+
+  
+  
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
 
 
 
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
-  
+
   
     <script type="text/javascript" id="motion.page.archive">
       $('.archive-year').velocity('transition.slideLeftIn');
@@ -448,20 +473,30 @@
   
 
 
-  <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
     });
-  </script>
+</script>
 
-  
 
-  
 
-  
-  
 
+
+
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
 </body>
 </html>
