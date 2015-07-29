@@ -39,19 +39,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
-我的環境:OS X 10.9.4、Python 2.7.5、Django 1.4。用 Dango 1.4 的原因是因為目前 GAE 只最高只支援到 Django 1.5 且還是實驗狀態，所以選擇 Django 1.4 作為網站開發的 framework。">
+<meta name="description" content="layout: posttitle: ‘有關於於上傳 Django 至 GAE 之設定與步驟’date: 2014-08-01 14:05comments: true
+categories:gae, programming, django
+此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
+我的環境:OS X 10.9.4、Python 2.7.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有關於於上傳 Django 至 GAE 之設定與步驟">
+<meta property="og:title" content="= lockys['learning'];">
 <meta property="og:url" content="http://yoursite.com/2014/08/01/record-uploaded-django-to-gae-set/">
 <meta property="og:site_name" content="= lockys['learning'];">
-<meta property="og:description" content="此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
-我的環境:OS X 10.9.4、Python 2.7.5、Django 1.4。用 Dango 1.4 的原因是因為目前 GAE 只最高只支援到 Django 1.5 且還是實驗狀態，所以選擇 Django 1.4 作為網站開發的 framework。">
+<meta property="og:description" content="layout: posttitle: ‘有關於於上傳 Django 至 GAE 之設定與步驟’date: 2014-08-01 14:05comments: true
+categories:gae, programming, django
+此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
+我的環境:OS X 10.9.4、Python 2.7.">
 <meta property="og:image" content="http://user-image.logdown.io/user/3139/blog/3166/post/212300/1h6DGg5CTHSAJcwMVRkw_Screen%20Shot%202014-08-02%20at%200.27.25.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有關於於上傳 Django 至 GAE 之設定與步驟">
-<meta name="twitter:description" content="此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
-我的環境:OS X 10.9.4、Python 2.7.5、Django 1.4。用 Dango 1.4 的原因是因為目前 GAE 只最高只支援到 Django 1.5 且還是實驗狀態，所以選擇 Django 1.4 作為網站開發的 framework。">
+<meta name="twitter:title" content="= lockys['learning'];">
+<meta name="twitter:description" content="layout: posttitle: ‘有關於於上傳 Django 至 GAE 之設定與步驟’date: 2014-08-01 14:05comments: true
+categories:gae, programming, django
+此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
+我的環境:OS X 10.9.4、Python 2.7.">
 
 
 
@@ -62,7 +68,7 @@
   };
 </script>
 
-    <title> 有關於於上傳 Django 至 GAE 之設定與步驟 // = lockys['learning']; </title>
+    <title>  // = lockys['learning']; </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 <!--[if lte IE 8]>
@@ -157,7 +163,7 @@
           
           
             
-              有關於於上傳 Django 至 GAE 之設定與步驟
+              
             
           
         </h1>
@@ -166,7 +172,7 @@
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2014-08-01T14:05:00+08:00" content="8月 1 2014">
+          <time itemprop="dateCreated" datetime="2014-08-01T00:00:00+08:00" content="8月 1 2014">
             8月 1 2014
           </time>
         </span>
@@ -193,7 +199,10 @@
       
 
       
-        <span itemprop="articleBody"><p>此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。</p>
+        <span itemprop="articleBody"><hr>
+<p>layout: post<br>title: ‘有關於於上傳 Django 至 GAE 之設定與步驟’<br>date: 2014-08-01 14:05<br>comments: true</p>
+<h2 id="categories:gae,_programming,_django">categories:gae, programming, django</h2>
+<p>此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。</p>
 <p><strong>我的環境:</strong><br>OS X 10.9.4、Python 2.7.5、Django 1.4。<br>用 Dango 1.4 的原因是因為目前 GAE 只最高只支援到 Django 1.5 且還是實驗狀態，所以選擇 Django 1.4 作為網站開發的 framework。</p>
 <a id="more"></a>
 <p>先假設我們已經有一個以 Django 1.4 所架設的網站，在 local 端也已經可以正常的運作，並且已經在GAE網頁上 create 好我們的 application，那我們便可以開始來準備 Deploy 我們的專案至GAE了!  </p>
@@ -229,7 +238,7 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/08/03/git-learning-notes/" rel="prev">#1 Create local repository and upload to Github.</a>
+              <a href="/2014/08/03/git-learning-notes/" rel="prev">#Note, Create local repository and upload to Github.</a>
             
           </div>
 
@@ -305,7 +314,7 @@
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分類</span>
               
           </div>
@@ -340,7 +349,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下載GAE_SDK_for_Python"><span class="nav-number">1.</span> <span class="nav-text">下載GAE SDK for Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定app-yaml檔案"><span class="nav-number">2.</span> <span class="nav-text">設定app.yaml檔案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories:gae,_programming,_django"><span class="nav-number">1.</span> <span class="nav-text">categories:gae, programming, django</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下載GAE_SDK_for_Python"><span class="nav-number">2.</span> <span class="nav-text">下載GAE SDK for Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定app-yaml檔案"><span class="nav-number">3.</span> <span class="nav-text">設定app.yaml檔案</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
