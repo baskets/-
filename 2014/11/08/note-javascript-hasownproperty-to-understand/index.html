@@ -186,35 +186,22 @@
 </blockquote>
 <a id="more"></a>
 <p>在 Javascript裡面，每個東西都像是物件，都會繼承自 Object 這個物件。<br>特別需注意的是，在使用 for in Loop 的時候須注意會向上搜尋一個物件的 prototype chain。</p>
-<p>For Example:</p>
-<pre><code><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;
-<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;
-<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr){
-    <span class="built_in">console</span>.log(i);
-}
-</code></pre><p>也許我們預期的 output 應該要是 (一般我們可能只是要取出陣列的值)</p>
-<pre><code>1
-2
-3
-</code></pre><p>但實際上結果會是</p>
-<pre><code>1
-2
-3
-bar
-</code></pre><p>這是因為 for in loop 會向上 tranverse prototype chain，由於 arr 繼承自 Array，因此會搜尋到 bar。但在大多數的寫程式情況下，我們並不期望這種情況發生。<br>這時候 hasOwnProperty() 能夠解決這個問題，他會確認被傳入的屬性(attribute)是否是被定義在呼叫此方法(hasOwnProperty)的物件下，而非物件的 prototype chain 內，因此我們可以這麼做</p>
-<pre><code><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;
-<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;
-<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr){
-    <span class="keyword">if</span> (arr.hasOwnProperty(i))
-            <span class="built_in">console</span>.log(i);
-}
-</code></pre><p> 或不使用 for in loop，而使用最一般的方法</p>
-<pre><code><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;
-<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;
-<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length; i++){
-            <span class="built_in">console</span>.log(i);
-}
-</code></pre><p>這便會 output 我們預期的 output。<br>這是我對於 hasOwnProperty 的一點小筆記</p>
+<p>程式範例:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>; <span class="comment">/* 在 Array function 的 prototype Object 新增一個 'bar' property, 其數值是 1*/</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr){</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>也許我們預期要輸出的結果應該是 (一般我們可能只是要取出陣列的值)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td></tr></table></figure>
+
+<p>但實際上結果會是</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">bar</div></pre></td></tr></table></figure>
+
+<p>這是因為 for in loop 會向上 tranverse prototype chain，由於 arr 繼承自 Array，因此會搜尋到 bar。但在大多數的寫程式情況下，我們並不期望這種情況發生。<br>這時候 hasOwnProperty() 能夠解決這個問題，他會確認被傳入的屬性 (attribute) 是否是被定義在呼叫此方法 (hasOwnProperty) 的物件下，而非物件的 prototype chain 內，因此我們可以這麼做</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr){</div><div class="line">  <span class="keyword">if</span> (arr.hasOwnProperty(i)){</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p> 或不使用 for in loop，而使用最一般的方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.bar = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] # inherit from Arr;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length; i++){</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>這便會輸出我們預期的 output。<br>這是我對於 hasOwnProperty 的一點小筆記</p>
 </span>
       
     </div>
