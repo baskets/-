@@ -1,0 +1,612 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+    
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
+
+
+    <meta name="description" content="Take notes to save more time" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
+
+
+<meta name="description" content="layout: posttitle: ‘有關於於上傳 Django 至 GAE 之設定與步驟’date: 2014-08-01 14:05comments: true
+categories:gae, programming, django
+此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
+我的環境:OS X 10.9.4、Python 2.7.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="= lockys['learning'];">
+<meta property="og:url" content="http://yoursite.com/2014/08/01/record-uploaded-django-to-gae-set/">
+<meta property="og:site_name" content="= lockys['learning'];">
+<meta property="og:description" content="layout: posttitle: ‘有關於於上傳 Django 至 GAE 之設定與步驟’date: 2014-08-01 14:05comments: true
+categories:gae, programming, django
+此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
+我的環境:OS X 10.9.4、Python 2.7.">
+<meta property="og:image" content="http://user-image.logdown.io/user/3139/blog/3166/post/212300/1h6DGg5CTHSAJcwMVRkw_Screen%20Shot%202014-08-02%20at%200.27.25.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="= lockys['learning'];">
+<meta name="twitter:description" content="layout: posttitle: ‘有關於於上傳 Django 至 GAE 之設定與步驟’date: 2014-08-01 14:05comments: true
+categories:gae, programming, django
+此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。
+我的環境:OS X 10.9.4、Python 2.7.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post'
+  };
+</script>
+
+    <title>  // = lockys['learning']; </title>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+<!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">= lockys['learning'];</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+        </div>
+    </header>
+
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2014-08-01T00:00:00+08:00" content="8月 1 2014">
+            8月 1 2014
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+            <a class="post-gallery-img fancybox" href="http://user-image.logdown.io/user/3139/blog/3166/post/212300/1h6DGg5CTHSAJcwMVRkw_Screen%20Shot%202014-08-02%20at%200.27.25.png" rel="gallery_fwcr368f5tqibura" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+              <img src="http://user-image.logdown.io/user/3139/blog/3166/post/212300/1h6DGg5CTHSAJcwMVRkw_Screen%20Shot%202014-08-02%20at%200.27.25.png" itemprop="contentUrl"/>
+            </a>
+          
+        </div>
+      
+
+      
+        <span itemprop="articleBody"><hr>
+<p>layout: post<br>title: ‘有關於於上傳 Django 至 GAE 之設定與步驟’<br>date: 2014-08-01 14:05<br>comments: true</p>
+<h2 id="categories:gae,_programming,_django">categories:gae, programming, django</h2>
+<p>此篇文章是用來記錄我上傳 Django 至 GAE 的步驟以及搜尋到之資源，做個紀錄，以供日後參考。</p>
+<p><strong>我的環境:</strong><br>OS X 10.9.4、Python 2.7.5、Django 1.4。<br>用 Dango 1.4 的原因是因為目前 GAE 只最高只支援到 Django 1.5 且還是實驗狀態，所以選擇 Django 1.4 作為網站開發的 framework。</p>
+<a id="more"></a>
+<p>先假設我們已經有一個以 Django 1.4 所架設的網站，在 local 端也已經可以正常的運作，並且已經在GAE網頁上 create 好我們的 application，那我們便可以開始來準備 Deploy 我們的專案至GAE了!  </p>
+<h2 id="下載GAE_SDK_for_Python">下載GAE SDK for Python</h2>
+<p>首先我們根據您的系統下載Google App Engine SDK for Python，網址如下<br><a href="https://developers.google.com/appengine/downloads?hl=zh-tw" target="_blank" rel="external">Download GAE SDK for Python</a></p>
+<h2 id="設定app-yaml檔案">設定app.yaml檔案</h2>
+<p>現在我們的專案結構如下<br>oursite<br>|<strong> oursite<br>|</strong> some apps<br>|__ static<br>manage.py</p>
+<p>我們必須要在我們專案的根目錄下加入一個 app.yaml 檔，以便讓 GAE 知道我們的需求以及設定。<br>下面是一個 app.yaml 的範例</p>
+<p><strong>A sample of app.yaml</strong><br>要設定你的環境版本，以及專案所需的 libraries，並設定 application 為你當初在 GAE 上創立專案時之ID<br>也就是 <a href="http://**your-app-id**.appspot.com" target="_blank" rel="external">http://**your-app-id**.appspot.com</a> 的粗體部分</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">application</span>: <span class="string">your-app-id</span></div><div class="line"><span class="attribute">version</span>: <span class="string">2</span></div><div class="line"><span class="attribute">runtime</span>: <span class="string">python27</span></div><div class="line"><span class="attribute">api_version</span>: <span class="string">1</span></div><div class="line"><span class="attribute">threadsafe</span>: <span class="string">true</span></div><div class="line"></div><div class="line"><span class="vala">libraries:</span></div><div class="line">- name: django</div><div class="line">  version: <span class="string">"1.4"</span></div><div class="line"><span class="preprocessor"># - name: MySQLdb</span></div><div class="line"><span class="preprocessor">#   version: "latest"</span></div><div class="line"><span class="preprocessor"># - name: PIL</span></div><div class="line"><span class="preprocessor">#   version: "1.1.7"</span></div><div class="line"></div><div class="line">builtins:</div><div class="line">- django_wsgi: on</div><div class="line"></div><div class="line">env_variables:</div><div class="line">  DJANGO_SETTINGS_MODULE: <span class="string">'oursite.settings'</span></div><div class="line"></div><div class="line">handlers:</div><div class="line">- url: /<span class="keyword">static</span></div><div class="line">  static_dir: <span class="keyword">static</span></div></pre></td></tr></table></figure>
+
+<p>我們必需將 app.yaml 放在我們專案的根目錄之下，如下</p>
+<p>oursite<br>|<strong> oursite<br>|</strong> some apps<br>|__ static<br>manage.py<br>app.yaml</p>
+<p>最後都設定完成後，我們就可以下以下的指令 Deploy 我們的網站專案至 GAE。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">appcfg.<span class="keyword">py</span> --oauth2 <span class="keyword">update</span> .</div></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Notes:<br>若下 appcfg.py 是 command not found，請開啟我們在一開始安裝的 GoogleAppEngineLauncher，點在 Preference 中的 symlink，如此應該能夠解決指令找不到的問題。<br>更多 appcfg.py 的用法:<br><a href="http://www.keakon.net/2009/02/27/appcfg.py%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D" target="_blank" rel="external">More about appcfg.py</a>, <a href="https://developers.google.com/appengine/docs/python/tools/uploadinganapp?csw=1" target="_blank" rel="external">Google Documentation</a></p>
+</blockquote>
+<p>在下完這行 command 之後，會自動開啟您的預設瀏覽器，做帳號的登入與權限確認便會開始進行 deploy 如下圖</p>
+<p><img src="http://user-image.logdown.io/user/3139/blog/3166/post/212300/1h6DGg5CTHSAJcwMVRkw_Screen%20Shot%202014-08-02%20at%200.27.25.png" alt="deploy"></p>
+<p>完成之後在 <a href="http://your-app-id.appspot.com" target="_blank" rel="external">http://your-app-id.appspot.com</a>，我想就能看見你的網站了，那就大功告成了<br>上傳之後可能會遇到一些問題，譬如您的 Django 專案可能是有 import 第三方的 module，但 GAE 上並不會有，所以別忘了要一起把需要用到的 modules 或 packages 一同上傳上去，可以參考此<a href="http://stackoverflow.com/questions/14850853/how-to-include-third-party-python-libraries-in-google-app-engine" target="_blank" rel="external">網址</a>做設定。</p>
+<p>以上，這篇文章大概是一個簡略的流程紀錄。<br>另外可以在 github 上，搜尋 gae django 上搜尋關鍵字，應該可以找到類似的 examples，讓你更方便地上傳 Django 專案至 GAE 上。</p>
+<p><strong>References:</strong><br><a href="http://appsembler.com/blog/deploy-django-apps-to-google-app-engine-with-django-deployer-in-5-minutes/" target="_blank" rel="external">Django-deployer</a> : 一個外國人寫的自動化上傳工具，不過我無法成功，有興趣的人可以參考看看!<br><a href="http://dev.pippi.im/writing/create-a-blog-in-minutes-on-app-engine-with-django/" target="_blank" rel="external">Create a Blog on GAE</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/03/git-learning-notes/" rel="prev">#Note, Create local repository and upload to Github.</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/05/06/increase-my-comfort-for-sublime-text-shortcut/" rel="next">為 Sublime Text 增加自己喜歡的快捷鍵</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+              </div>
+            
+        </div>
+
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="lockys" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">lockys</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Take notes to save more time</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories:gae,_programming,_django"><span class="nav-number">1.</span> <span class="nav-text">categories:gae, programming, django</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下載GAE_SDK_for_Python"><span class="nav-number">2.</span> <span class="nav-text">下載GAE SDK for Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定app-yaml檔案"><span class="nav-number">3.</span> <span class="nav-text">設定app.yaml檔案</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lockys</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+        </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+</div>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
+</body>
+</html>
